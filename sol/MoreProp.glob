@@ -1,0 +1,138 @@
+DIGEST d7dbdf4422ddd6591e3328468f7f5c60
+FMoreProp
+R456:458 Coq.Init.Logic <> :type_scope:x_'='_x not
+R452:454 Basics <> :nat_scope:x_'+'_x not
+R510:512 Coq.Init.Logic <> :type_scope:x_'='_x not
+R499:505 Basics <> ble_nat def
+R513:517 Basics <> false constr
+R567:575 Prop <> beautiful ind
+R789:791 Coq.Init.Logic <> :type_scope:x_'='_x not
+R785:787 Basics <> :nat_scope:x_'+'_x not
+R832:840 Prop <> beautiful ind
+prf 1093:1105 <> plus_2_2_is_4
+R1117:1119 Coq.Init.Logic <> :type_scope:x_'='_x not
+R1113:1115 Basics <> :nat_scope:x_'+'_x not
+def 1349:1357 <> plus_fact
+R1376:1378 Coq.Init.Logic <> :type_scope:x_'='_x not
+R1372:1374 Basics <> :nat_scope:x_'+'_x not
+R1388:1396 MoreProp <> plus_fact def
+prf 1581:1597 <> plus_fact_is_true
+R1604:1612 MoreProp <> plus_fact def
+R2126:2129 Prop <> even def
+R2167:2170 Prop <> even def
+R2207:2210 Prop <> even def
+def 2707:2713 <> between
+R2723:2725 Coq.Init.Datatypes <> nat ind
+R2772:2774 Coq.Init.Logic <> :type_scope:x_'='_x not
+R2740:2743 Basics <> andb def
+R2760:2766 Basics <> ble_nat def
+R2770:2770 MoreProp <> m var
+R2768:2768 MoreProp <> o var
+R2746:2752 Basics <> ble_nat def
+R2756:2756 MoreProp <> o var
+R2754:2754 MoreProp <> n var
+R2775:2778 Basics <> true constr
+def 2836:2839 <> teen
+R2843:2845 Coq.Init.Datatypes <> nat ind
+R2856:2862 MoreProp <> between def
+def 2995:3007 <> true_for_zero
+R3012:3014 Coq.Init.Datatypes <> nat ind
+R3035:3035 MoreProp <> P var
+def 3321:3340 <> true_for_all_numbers
+R3345:3347 Coq.Init.Datatypes <> nat ind
+R3378:3378 MoreProp <> P var
+R3380:3380 MoreProp <> n var
+def 3625:3638 <> preserved_by_S
+R3643:3645 Coq.Init.Datatypes <> nat ind
+R3685:3685 MoreProp <> P var
+R3688:3688 Coq.Init.Datatypes <> S constr
+R3690:3691 MoreProp <> n' var
+R3677:3677 MoreProp <> P var
+R3679:3680 MoreProp <> n' var
+def 4065:4080 <> combine_odd_even
+R4096:4098 Coq.Init.Datatypes <> nat ind
+R4111:4113 Coq.Init.Datatypes <> nat ind
+R4158:4161 Basics <> oddb def
+R4163:4163 MoreProp <> n var
+R4182:4186 MoreProp <> Peven var
+R4188:4188 MoreProp <> n var
+R4170:4173 MoreProp <> Podd var
+R4175:4175 MoreProp <> n var
+prf 4286:4307 <> combine_odd_even_intro
+R4335:4337 Coq.Init.Datatypes <> nat ind
+R4353:4355 Coq.Init.Datatypes <> nat ind
+R4431:4446 MoreProp <> combine_odd_even def
+R4459:4459 MoreProp <> n var
+R4453:4457 MoreProp <> Peven var
+R4448:4451 MoreProp <> Podd var
+R4415:4419 MoreProp <> Peven var
+R4421:4421 MoreProp <> n var
+R4403:4405 Coq.Init.Logic <> :type_scope:x_'='_x not
+R4397:4400 Basics <> oddb def
+R4402:4402 MoreProp <> n var
+R4406:4410 Basics <> false constr
+R4381:4384 MoreProp <> Podd var
+R4386:4386 MoreProp <> n var
+R4370:4372 Coq.Init.Logic <> :type_scope:x_'='_x not
+R4364:4367 Basics <> oddb def
+R4369:4369 MoreProp <> n var
+R4373:4376 Basics <> true constr
+R4530:4545 MoreProp <> combine_odd_even def
+R4560:4563 Basics <> oddb def
+R4560:4563 Basics <> oddb def
+prf 4693:4717 <> combine_odd_even_elim_odd
+R4744:4746 Coq.Init.Datatypes <> nat ind
+R4762:4764 Coq.Init.Datatypes <> nat ind
+R4830:4833 MoreProp <> Podd var
+R4835:4835 MoreProp <> n var
+R4815:4817 Coq.Init.Logic <> :type_scope:x_'='_x not
+R4809:4812 Basics <> oddb def
+R4814:4814 MoreProp <> n var
+R4818:4821 Basics <> true constr
+R4772:4787 MoreProp <> combine_odd_even def
+R4800:4800 MoreProp <> n var
+R4794:4798 MoreProp <> Peven var
+R4789:4792 MoreProp <> Podd var
+R4872:4887 MoreProp <> combine_odd_even def
+R4932:4935 Basics <> oddb def
+R4932:4935 Basics <> oddb def
+prf 5039:5064 <> combine_odd_even_elim_even
+R5091:5093 Coq.Init.Datatypes <> nat ind
+R5109:5111 Coq.Init.Datatypes <> nat ind
+R5178:5182 MoreProp <> Peven var
+R5184:5184 MoreProp <> n var
+R5162:5164 Coq.Init.Logic <> :type_scope:x_'='_x not
+R5156:5159 Basics <> oddb def
+R5161:5161 MoreProp <> n var
+R5165:5169 Basics <> false constr
+R5119:5134 MoreProp <> combine_odd_even def
+R5147:5147 MoreProp <> n var
+R5141:5145 MoreProp <> Peven var
+R5136:5139 MoreProp <> Podd var
+R5221:5236 MoreProp <> combine_odd_even def
+R5282:5285 Basics <> oddb def
+R5282:5285 Basics <> oddb def
+def 6040:6067 <> true_upto_n__true_everywhere
+R6090:6092 Coq.Init.Datatypes <> nat ind
+R6098:6100 Coq.Init.Datatypes <> nat ind
+R6127:6127 MoreProp <> n var
+R6157:6157 MoreProp <> P var
+R6159:6159 MoreProp <> m var
+R6166:6166 Coq.Init.Datatypes <> S constr
+R6187:6214 MoreProp <> true_upto_n__true_everywhere def
+R6219:6219 MoreProp <> P var
+R6175:6175 MoreProp <> P var
+R6178:6178 Coq.Init.Datatypes <> S constr
+def 6238:6256 <> true_upto_n_example
+R6264:6264 Coq.Init.Logic <> :type_scope:x_'='_x not
+R6313:6319 Coq.Init.Logic <> :type_scope:x_'='_x not
+R6372:6372 Coq.Init.Logic <> :type_scope:x_'='_x not
+R6265:6292 MoreProp <> true_upto_n__true_everywhere def
+R6306:6309 Prop <> even def
+R6311:6311 MoreProp <> n var
+R6361:6363 Coq.Init.Datatypes <> nat ind
+R6366:6369 Prop <> even def
+R6371:6371 MoreProp <> m var
+R6340:6343 Prop <> even def
+R6330:6333 Prop <> even def
+R6320:6323 Prop <> even def

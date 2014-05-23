@@ -1,0 +1,22 @@
+module Hw1 where
+  open import Level
+  data Day : Set where
+    monday tuesday wednesday thursday friday saturday sunday : Day
+
+  nextWeekday : Day -> Day
+  nextWeekday monday    = tuesday
+  nextWeekday tuesday   = wednesday
+  nextWeekday wednesday = thursday
+  nextWeekday thursday  = friday
+  nextWeekday friday    = saturday
+  nextWeekday saturday  = sunday
+  nextWeekday sunday    = monday
+
+  data _==_ {X : Set}(x : X) : X -> Set where
+    refl : x == x
+
+  {-# BUILTIN EQUALITY _==_ #-}
+  {-# BUILTIN REFL refl #-}
+
+  testNextWeekday : (nextWeekday (nextWeekday saturday)) == tuesday
+  testNextWeekday saturday = tuesday
