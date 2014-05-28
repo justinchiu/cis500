@@ -16,6 +16,8 @@ module Hw1 where
   data _≡_ {A : Set} : A → A → Set where
     refl : {x : A} → x ≡ x
 
+  infix 4 _≡_
+
   testNextWeekday : nextWeekday (nextWeekday Saturday) ≡ Tuesday
   testNextWeekday = refl
 
@@ -41,9 +43,9 @@ module Hw1 where
   testOr2 : _∨_ False False ≡ False
   testOr2 = refl
   
-  nAndB : Bool → Bool → Bool
-  nAndB True True = False
-  nAndB _    _    = True
+  _⊼_ : Bool → Bool → Bool
+  True ⊼ True = False
+  _    ⊼ _    = True
 
   -- Exercise 1: 1 star (andb3)
   andB3 : Bool → Bool → Bool → Bool
@@ -134,7 +136,7 @@ module Hw1 where
   mult0n = λ {n} → refl
 
   plusId : ∀ {n m : ℕ} → n ≡ m → (n + n) ≡ (m + m)
-  plusId .a .a (refl a) = refl a
+  plusId refl = refl
 
   plusId3 : ∀ {n m o : ℕ} → n ≡ m → m ≡ o → (n + m) ≡ (m + o)
   plusId3 refl refl = refl
@@ -147,3 +149,29 @@ module Hw1 where
 
   plus1Neq0 : ∀ {n : ℕ} → ((S n) == 0) ≡ False
   plus1Neq0 = λ {n} → refl
+
+  negInvolutive : ∀ {b : Bool} → ¬ (¬ b) ≡ b
+  negInvolutive {True}  = refl
+  negInvolutive {False} = refl
+
+  zeroℕEqPlusOne : ∀ {n : ℕ} → (0 == (n + 1)) ≡ False
+  zeroℕEqPlusOne {Z}   = refl
+  zeroℕEqPlusOne {S n} = refl
+
+  if_then_else_ : {A : Set} -> Bool -> A -> A -> A
+  if True then x else y = x
+  if False then x else y = y
+
+  id : ∀ {x} {T : Set x} → T → T
+  id x = x
+
+  idLemma : ∀ {x} {T : Set x} → (id x) ≡ x
+  idLemma = refl
+
+  idIdLemma : ∀ {x} {T : Set x} → (id (id x)) ≡ x
+  idIdLemma = refl
+
+  identityFnAppliedTwice : ∀ (f : Bool → Bool) {x b : Bool} 
+    → (f x) ≡ x → (f (f b)) ≡ b
+  identityFnAppliedTwice id {x} {True} h = {!!}
+  identityFnAppliedTwice id {x} {False} h = {!!}
