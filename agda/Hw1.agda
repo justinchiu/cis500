@@ -171,7 +171,8 @@ module Hw1 where
   idIdLemma : ∀ {x} {T : Set x} → (id (id x)) ≡ x
   idIdLemma = refl
 
-  identityFnAppliedTwice : ∀ (f : Bool → Bool) {x b : Bool} 
-    → (f x) ≡ x → (f (f b)) ≡ b
-  identityFnAppliedTwice id {x} {True} h = {!!}
-  identityFnAppliedTwice id {x} {False} h = {!!}
+  identityFnAppliedTwice : ∀ {f : Bool → Bool}
+    → (∀ x → (f x) ≡ x)
+    → ∀ {b} → (f (f b)) ≡ b
+  identityFnAppliedTwice = λ x → {!!}
+
