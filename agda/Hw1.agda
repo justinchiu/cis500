@@ -13,44 +13,52 @@ module Hw1 where
   nextWeekday Saturday  = Monday
   nextWeekday Sunday    = Monday
 
-  data _≡_ {A : Set} : A → A → Set where
-    refl : {x : A} → x ≡ x
-
   infix 4 _≡_
+  data _≡_ {α} {A : Set α} (x : A) : A → Set α where
+    refl : x ≡ x
+
+  {-# BUILTIN EQUALITY _≡_ #-}
+  {-# BUILTIN REFL    refl #-}
 
   testNextWeekday : nextWeekday (nextWeekday Saturday) ≡ Tuesday
   testNextWeekday = refl
 
+  data ⊥ : Set where
+  record ⊤ : Set where
+
+  trivial : ⊤
+  trivial = record {}
+
   data Bool : Set where
-    True  : Bool
-    False : Bool
+    true  : Bool
+    false : Bool
 
-  ¬ : Bool → Bool
-  ¬ True = False
-  ¬ False = True
+  ~ : Bool → Bool
+  ~ true = false
+  ~ false = true
 
-  _∧_ : Bool → Bool → Bool
-  True  ∧ b  = b
-  False ∧ _ = False
+  _&&_ : Bool → Bool → Bool
+  true  && b  = b
+  false && _ = false
 
-  _∨_ : Bool → Bool → Bool
-  True  ∨ _ = True
-  False ∨ b = b
+  _||_ : Bool → Bool → Bool
+  true  || _ = true
+  false || b = b
 
-  testOr1 : _∨_ True False ≡ True
+  testOr1 : _||_ true false ≡ true
   testOr1 = refl
   
-  testOr2 : _∨_ False False ≡ False
+  testOr2 : _&&_ false false ≡ false
   testOr2 = refl
   
-  _⊼_ : Bool → Bool → Bool
-  True ⊼ True = False
-  _    ⊼ _    = True
+  _nand_ : Bool → Bool → Bool
+  true nand true = false
+  _    nand _    = true
 
   -- Exercise 1: 1 star (andb3)
   andB3 : Bool → Bool → Bool → Bool
-  andB3 True True True = True
-  andB3 _    _    _    = False
+  andB3 true true true = true
+  andB3 _    _    _    = false
 
   data ℕ : Set where
     Z : ℕ
@@ -66,12 +74,12 @@ module Hw1 where
   minusTwo (S (S n)) = n
 
   even : ℕ → Bool
-  even Z          = True
-  even (S Z)      = False
+  even Z          = true
+  even (S Z)      = false
   even (S (S n))  = even n
 
   odd : ℕ → Bool
-  odd x = ¬ (even x)
+  odd x = ~ (even x)
 
   _+_ : ℕ → ℕ → ℕ
   Z     + m = m
@@ -82,9 +90,7 @@ module Hw1 where
   (S n) * m = m + (n * m)
 
   {-# BUILTIN NATURAL ℕ #-}
-  {-# BUILTIN ZERO Z #-}
-  {-# BUILTIN SUC S #-}
-
+  
   check3 : 3 ≡ S (S (S Z))
   check3 = refl
 
@@ -103,27 +109,27 @@ module Hw1 where
   (S n) ! = (S n) * n !
 
   _==_ : ℕ → ℕ → Bool
-  Z     == Z     = True
+  Z     == Z     = true
   (S n) == (S m) = n == m
-  _     == _     = False
+  _     == _     = false
 
   _<_ : ℕ → ℕ → Bool
-  Z     < (S _) = True
-  _     < Z     = False
+  Z     < (S _) = true
+  _     < Z     = false
   (S n) < (S m) = n < m
 
   _>_ : ℕ → ℕ → Bool
-  Z     > _     = False
-  (S _) > Z     = True
+  Z     > _     = false
+  (S _) > Z     = true
   (S n) > (S m) = n > m
 
   _≤_ : ℕ → ℕ → Bool
-  n ≤ m = (n == m) ∨ (n < m)
+  n ≤ m = (n == m) || (n < m)
 
   _≥_ : ℕ → ℕ → Bool
-  n ≥ m = (n == m) ∨ (n > m)
+  n ≥ m = (n == m) || (n > m)
 
-  leqCheck : (Z ≤ (S Z)) ≡ True
+  leqCheck : (Z ≤ (S Z)) ≡ true
   leqCheck = refl
 
   plus0n : ∀ {n : ℕ} → (Z + n) ≡ n
@@ -147,32 +153,75 @@ module Hw1 where
   mult1Plus : ∀ {n m : ℕ} → ((1 + n) * m) ≡ (m + (n * m))
   mult1Plus = λ {n} {m} → refl
 
-  plus1Neq0 : ∀ {n : ℕ} → ((S n) == 0) ≡ False
+  plus1Neq0 : ∀ {n : ℕ} → ((S n) == 0) ≡ false
   plus1Neq0 = λ {n} → refl
 
-  negInvolutive : ∀ {b : Bool} → ¬ (¬ b) ≡ b
-  negInvolutive {True}  = refl
-  negInvolutive {False} = refl
+  negInvolutive : ∀ {b : Bool} → ~ (~ b) ≡ b
+  negInvolutive {true}  = refl
+  negInvolutive {false} = refl
 
-  zeroℕEqPlusOne : ∀ {n : ℕ} → (0 == (n + 1)) ≡ False
+  zeroℕEqPlusOne : ∀ {n : ℕ} → (0 == (n + 1)) ≡ false
   zeroℕEqPlusOne {Z}   = refl
   zeroℕEqPlusOne {S n} = refl
 
   if_then_else_ : {A : Set} -> Bool -> A -> A -> A
-  if True then x else y = x
-  if False then x else y = y
+  if true then x else y = x
+  if false then x else y = y
 
   id : ∀ {x} {T : Set x} → T → T
   id x = x
 
-  idLemma : ∀ {x} {T : Set x} → (id x) ≡ x
-  idLemma = refl
+  trans : {A : Set}{a b c : A} → a ≡ b → b ≡ c → a ≡ c
+  trans refl refl = refl
 
-  idIdLemma : ∀ {x} {T : Set x} → (id (id x)) ≡ x
-  idIdLemma = refl
+  identityFnAppliedTwice : ∀ (f : Bool → Bool)
+    → (∀ (x : Bool) → (f x) ≡ x)
+    → (∀ (b : Bool) → (f (f b)) ≡ b)
+  identityFnAppliedTwice f fx b with fx b | fx (f b)
+  ... | c₁ | c₂ = trans c₂ c₁
 
-  identityFnAppliedTwice : ∀ {f : Bool → Bool}
-    → (∀ x → (f x) ≡ x)
-    → ∀ {b} → (f (f b)) ≡ b
-  identityFnAppliedTwice = λ x → {!!}
+  {-# BUILTIN BOOL Bool #-}
 
+  negationFnAppliedTwice : ∀ (f : Bool → Bool)
+    → (∀ (x : Bool) → (f x) ≡ (~ x))
+    → (∀ (b : Bool) → (f (f b)) ≡ b)
+  negationFnAppliedTwice f fnx b rewrite (fnx b) | fnx (~ b) with b
+  ... | true = refl
+  ... | false = refl
+
+  sym : {A : Set}{x y : A} → x ≡ y → y ≡ x
+  sym refl = refl
+
+  andEqOr : ∀ (a b : Bool)
+    → (a && b ≡ a || b)
+    → a ≡ b
+  andEqOr true true eq = refl
+  andEqOr true false eq = sym eq
+  andEqOr false true eq = eq
+  andEqOr false false eq = refl
+
+  data Bin : Set where
+    BZ : Bin
+    *2 : Bin → Bin
+    *2+1 : Bin → Bin
+
+  incr : Bin → Bin
+  incr BZ = *2+1 BZ
+  incr (*2 b) = *2+1 b
+  incr (*2+1 b) = *2 (incr b)
+
+  binToNat : Bin → ℕ
+  binToNat BZ = Z
+  binToNat (*2 b) = 2 * (binToNat b)
+  binToNat (*2+1 b) = 1 + (2 * (binToNat b))
+
+  plus' :  ℕ → ℕ → ℕ
+  plus' Z m = m
+  plus' (S n) m = S (plus' n m)
+
+  factorialBad : ℕ → ℕ
+  factorialBad n with n == Z
+  ... | true = 1
+  ... | false = n * (factorialBad (n - 1))
+
+  
