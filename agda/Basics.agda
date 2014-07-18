@@ -1,4 +1,4 @@
-module Hw1 where
+module Basics where
   open import Level
 
   data Day : Set where
@@ -223,5 +223,3 @@ module Hw1 where
   factorialBad n with n == Z
   ... | true = 1
   ... | false = n * (factorialBad (n - 1))
-
-  
