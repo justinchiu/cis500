@@ -1,4 +1,4 @@
-module Basics where
+module SfBasics where
   open import Level
 
   data Day : Set where
@@ -218,8 +218,11 @@ module Basics where
   plus' :  ℕ → ℕ → ℕ
   plus' Z m = m
   plus' (S n) m = S (plus' n m)
-
+  
+  {-
   factorialBad : ℕ → ℕ
   factorialBad n with n == Z
   ... | true = 1
   ... | false = n * (factorialBad (n - 1))
+  -}
+
