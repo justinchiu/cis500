@@ -21,5 +21,16 @@ module SfInduction where
   minusSelf Z = refl
   minusSelf (S n) = minusSelf n
 
-  
+  mult0r : ∀ (n : ℕ) → n * 0 ≡ 0
+  mult0r Z = refl
+  mult0r (S n) = mult0r n
 
+  plusNSm : ∀ (n m : ℕ) → S (n + m) ≡ n + (S m)
+  plusNSm Z m = refl
+  plusNSm (S n) m = cong S (plusNSm n m)
+
+  +-comm : ∀ (n m : ℕ) → n + m ≡ m + n
+  +-comm Z m = sym (plus0r1 m)
+  +-comm (S n) m = {!!}
+
+  
