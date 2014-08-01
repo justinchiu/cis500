@@ -31,6 +31,27 @@ module SfInduction where
 
   +-comm : ∀ (n m : ℕ) → n + m ≡ m + n
   +-comm Z m = sym (plus0r1 m)
-  +-comm (S n) m = {!!}
+  +-comm (S n) m = trans (cong S (+-comm n m)) (plusNSm m n)
 
-  
+  +-assoc : ∀ (n m p : ℕ) → n + (m + p) ≡ (n + m) + p
+  +-assoc Z m p = refl
+  +-assoc (S n) m p = cong S (+-assoc n m p)
+
+  double : ℕ → ℕ
+  double Z = Z
+  double (S n) = S (S (double n))
+
+  double-+ : ∀ (n : ℕ) → double n ≡ n + n
+  double-+ Z = refl
+  double-+ (S n) rewrite double-+ n = cong S (plusNSm n n)
+
+  -- no need for assert in Agda here, I guess?
+  *0+ : ∀ (n m : ℕ) → (0 + n) * m ≡ n * m
+  *0+ n m = refl
+
+  +-rearrange : ∀ (n m p q : ℕ) →
+    (n + m) + (p + q) ≡ (m + n) + (p + q)
+  +-rearrange n m p q rewrite +-comm n m | +-comm p q = refl
+
+  +-swap : ∀ (n m p : ℕ) → n + (m + p) ≡ m + (n + p)
+  +-swap n m p = {!!}
