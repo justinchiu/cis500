@@ -54,4 +54,8 @@ module SfInduction where
   +-rearrange n m p q rewrite +-comm n m | +-comm p q = refl
 
   +-swap : ∀ (n m p : ℕ) → n + (m + p) ≡ m + (n + p)
-  +-swap n m p = {!!}
+  +-swap n m p = trans (+-assoc n m p) ((sym (trans (+-assoc m n p) (+-rearrange m n 0 p))))
+
+  *mSn : ∀ (m n : ℕ) → m * (S n) ≡ m + (m * n)
+  *mSn Z n = refl
+  *mSn (S m) n = cong S {!!}
