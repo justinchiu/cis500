@@ -58,4 +58,16 @@ module SfInduction where
 
   *mSn : ∀ (m n : ℕ) → m * (S n) ≡ m + (m * n)
   *mSn Z n = refl
-  *mSn (S m) n = cong S {!!}
+  *mSn (S m) n rewrite *mSn m n = cong S (+-swap n m (m * n))
+
+  *-comm : ∀ (m n : ℕ) → m * n ≡ n * m
+  *-comm Z n = sym (mult0r n)
+  *-comm (S m) n rewrite *-comm m n = sym (*mSn n m)
+
+  evenThenOdd : ∀ (n : ℕ) → even n ≡ ~ (even (S n))
+  evenThenOdd Z = refl
+  evenThenOdd (S n) rewrite evenThenOdd n with even (S n)
+  ... | true = refl
+  ... | false = refl
+
+    
